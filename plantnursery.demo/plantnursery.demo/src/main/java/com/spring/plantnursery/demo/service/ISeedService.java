@@ -40,41 +40,41 @@ public class ISeedService {
 			return isr.save(seed);
 		}
 	}
-	public Seed deleteSeed(Seed seed) {
-		int seedId=seed.getSeedId();
-		Optional<Seed> opt=isr.findById(seedId);
-		if(opt.isPresent()) {
-			Seed old=opt.get();
-			isr.delete(old);
-			return old;
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Seed Is Not Found");
-		}
+//	public Seed deleteSeed(Seed seed) {
+//		int seedId=seed.getSeedId();
+//		Optional<Seed> opt=isr.findById(seedId);
+//		if(opt.isPresent()) {
+//			Seed old=opt.get();
+//			isr.delete(old);
+//			return old;
+//		} else {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Seed Is Not Found");
+//		}
+//	}
+	public Optional<Seed> viewSeed(int seedId) {
+		return isr.findById(seedId);
 	}
-	public Seed viewSeed(int seedId) {
-		return isr.getById(seedId);
-	}
-	public Seed viewSeed(String commonName) {
-		List<Seed> seed=isr.findAll();
-		for(int i=0;i<seed.size();i++) {
-			if(seed.get(i).getCommonName().equals(commonName)) {
-				return seed.get(i);
-			} 
-		}
-		throw new ResponseStatusException(HttpStatus.NOT_FOUND,"commonName Is Not Found");
-	}
+//	public Seed viewSeed(String commonName) {
+//		List<Seed> seed=isr.findAll();
+//		for(int i=0;i<seed.size();i++) {
+//			if(seed.get(i).getCommonName().equals(commonName)) {
+//				return seed.get(i);
+//			} 
+//		}
+//		throw new ResponseStatusException(HttpStatus.NOT_FOUND,"commonName Is Not Found");
+//	}
 	public List<Seed> viewAllSeeds(){
 		return isr.findAll();
 	}
-	public List<Seed> viewAllSeeds(String typeOfSeed){
-		List<Seed> seed=isr.findAll();
-		for(int i=0;i<seed.size();i++) {
-			if(!(seed.get(i).getTypeOfSeed().equals(typeOfSeed))) {
-				seed.remove(i);
-			}
-		}
-		return seed;
-	}
+//	public List<Seed> viewAllSeeds(String typeOfSeed){
+//		List<Seed> seed=isr.findAll();
+//		for(int i=0;i<seed.size();i++) {
+//			if(!(seed.get(i).getTypeOfSeed().equals(typeOfSeed))) {
+//				seed.remove(i);
+//			}
+//		}
+//		return seed;
+//	}
 	public Seed deleteSeed(int id) {
 		Optional<Seed> opt=isr.findById(id);
 		if(opt.isPresent()) {

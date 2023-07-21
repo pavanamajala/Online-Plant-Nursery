@@ -1,28 +1,33 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom';
 import axios from "axios";
 
 const ViewSeed = () => {
 
+    const navigate = useNavigate();
     const [seeds, setSeeds] = useState([]);
-    // let orders = [];
-
 
     const getSeeds = async () => {
         const allData = await axios.get('http://localhost:8080/api/seed');
         setSeeds(allData.data)
     }
 
+    const deleteSeed = async (id) => {
+        let status = await axios.delete(`http://localhost:8080/api/seed/${id}`)
+        console.log(status);
+        alert('deleted successfully');
+        getSeeds();
+    }
+
     useEffect(() => {
         getSeeds();
     }, [])
 
-    console.log(seeds)
-
     return (
-        <div style={{ padding: '50px', width: '80%', }}>
-            <table style={{ width: '90%', borderRadius: '5px', boxShadow: '0px 0px 16px #4443403D' }}>
+        <div style={{ padding: '50px'}}>
+            <table style={{ width: '100%', borderRadius: '5px', boxShadow: '0px 0px 16px #4443403D' }}>
                 <thead>
-                    <tr>
+                    <tr style={{ fontWeight: 'bold' }}>
                         <td>SL.No</td>
                         <td>Name</td>
                         <td>Time</td>
@@ -32,24 +37,29 @@ const ViewSeed = () => {
                         <td>Watering</td>
                         <td>Description</td>
                         <td>Cost</td>
+                        <td>Actions</td>
                     </tr>
                 </thead>
                 <tbody>
-                    {seeds.some((data, index) => {
+                    {seeds.map((data, index) => (
                         <tr key={index}>
-                            <td key={index}>{data?.seedId}</td>
-                            <td key={index}>{data?.commonName}</td>
-                            <td key={index}>{data?.bloomTime}</td>
-                            <td key={index}>{data?.difficultyLevel}</td>
-                            <td key={index}>{data?.temperature}</td>
-                            <td key={index}>{data?.typeOfSeed}</td>
-                            <td key={index}>{data?.watering}</td>
-                            <td key={index}>{data?.seedDescription}</td>
-                            <td key={index}>{data?.seedsCost}</td>
+                            <td >{index + 1}</td>
+                            <td >{data?.commonName}</td>
+                            <td >{data?.bloomTime}</td>
+                            <td >{data?.difficultyLevel}</td>
+                            <td >{data?.temperature}</td>
+                            <td >{data?.typeOfSeed}</td>
+                            <td >{data?.watering}</td>
+                            <td >{data?.seedDescription}</td>
+                            <td >{data?.seedsCost}</td>
+                            <td><Link to={`/seed/edit/${data?.seedId}`} >Edit</Link>&nbsp;&nbsp;
+                                <button style={{ backgroundColor: 'red' }} onClick={() => deleteSeed(data?.seedId)}>delete</button>
+                            </td>
                         </tr>
-                    })}
+                    ))}
                 </tbody>
             </table>
+            <button style={{width: '40%', marginLeft: '25%', marginTop: '20px', height:'30px', backgroundColor: '#8bdc81'}} onClick={() => navigate('/seed/create')}>Create</button>
         </div>
     )
 }
