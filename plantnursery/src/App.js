@@ -1,13 +1,13 @@
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ViewOrder from './order/ViewOrder';
+import ViewSeed from './seed/ViewSeed';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/order' Component={ViewOrder}/>
+          <Route path='/seed' Component={ViewSeed}/>
         </Routes>
       </BrowserRouter>
     </div>
