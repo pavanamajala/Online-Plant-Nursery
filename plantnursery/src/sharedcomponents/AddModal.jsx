@@ -1,9 +1,10 @@
 import React from 'react'
 
-const CreateEditSeed = ({inputfields, onInputChange, handleSubmit, input, handleCancel, edit}) => {
+const AddModal = ({inputfields, onInputChange, handleSubmit, input, handleCancel, edit}) => {
 
     return (
-        <div style={{ padding: '30px', width: '24%', borderRadius: '5px', boxShadow: '0px 0px 16px #4443403D', position: 'absolute', left:'33%', top:'10px', backgroundColor:'white'}}>
+        <div style={{ padding: '30px', width: '24%', borderRadius: '5px', boxShadow: '0px 0px 16px #4443403D', position: 'absolute', left:'33%', top:'80px', backgroundColor:'white'}}>
+            <div style={{ fontWeight: 'bold', textAlign: 'center', textDecoration: 'underline' }}>{edit ? "UPDATE ITEM" : "ADD ITEM"}</div>
             {inputfields?.map((data) => (
                 <div style={{ padding: '10px' }}>
                     <div style={{ fontWeight: 'bold' }}>{data.label}:</div>
@@ -18,4 +19,4 @@ const CreateEditSeed = ({inputfields, onInputChange, handleSubmit, input, handle
     )
 }
 
-export default CreateEditSeed;
+export default AddModal;

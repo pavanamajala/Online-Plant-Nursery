@@ -64,7 +64,7 @@ const ViewSeed = () => {
     return (
         <>
             <div style={addModal ? { padding: '50px', filter: 'blur(5px)' } : { padding: '50px' }}>
-                <table style={{ width: '100%', borderRadius: '5px', boxShadow: '0px 0px 16px #4443403D' }} >
+                <table style={{ width: '100%', borderRadius: '5px', boxShadow: '0px 0px 16px #4443403D', padding:'15px' }} >
                     <thead>
                         <tr style={{ fontWeight: 'bold' }}>
                             <td>SL.No</td>
