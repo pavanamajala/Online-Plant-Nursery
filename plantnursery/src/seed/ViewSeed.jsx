@@ -63,7 +63,12 @@ const ViewSeed = () => {
 
     return (
         <>
-            <div style={addModal ? { padding: '50px', filter: 'blur(5px)' } : { padding: '50px' }}>
+            <div style={addModal ? { padding: '30px', filter: 'blur(5px)' } : { padding: '30px' }}>
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <h1>SEEDS</h1>
+                <button style={{marginTop: '20px', height: '30px', backgroundColor: '#8bdc81', margin: '25px', float: 'right', width: '120px' }} onClick={() => setAddModal(true)}>Create</button>
+                </div>
+           
                 <table style={{ width: '100%', borderRadius: '5px', boxShadow: '0px 0px 16px #4443403D', padding:'15px' }} >
                     <thead>
                         <tr style={{ fontWeight: 'bold' }}>
@@ -102,7 +107,6 @@ const ViewSeed = () => {
                         ))}
                     </tbody>
                 </table>
-                <button style={{ width: '40%', marginLeft: '25%', marginTop: '20px', height: '30px', backgroundColor: '#8bdc81' }} onClick={() => setAddModal(true)}>Create</button>
             </div>
             {addModal && (
                 <AddModal
