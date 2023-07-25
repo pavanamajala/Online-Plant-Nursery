@@ -22,11 +22,15 @@ const ViewSeed = () => {
         "seedsPerPacket": null
     });
 
-    axios.defaults.headers.common = {'Authentication': `Bearer ${localStorage.getItem('token')}`};
+    axios.defaults.headers.common = { 'Authentication': `Bearer ${localStorage.getItem('token')}` };
 
     const getSeeds = async () => {
-        const allData = await axios.get('http://localhost:8080/api/seed');
-        setSeeds(allData.data)
+        try {
+            const allData = await axios.get('http://localhost:8080/api/seed');
+            setSeeds(allData.data)
+        } catch {
+            alert('api failed')
+        }
     }
 
     const onInputChange = (e) => {
@@ -34,29 +38,40 @@ const ViewSeed = () => {
     }
 
     const deleteSeed = async (id) => {
-        let status = await axios.delete(`http://localhost:8080/api/seed/${id}`)
-        console.log(status);
-        alert('deleted successfully');
-        getSeeds();
+        try {
+            await axios.delete(`http://localhost:8080/api/seed/${id}`)
+            alert('deleted successfully');
+            getSeeds();
+        } catch {
+            alert('api failed')
+        }
     }
 
     const handleSubmit = async () => {
-        if (edit) {
-            await axios.put('http://localhost:8080/api/seed', input);
-            alert('updated successfully');
-        } else {
-            await axios.post('http://localhost:8080/api/seed', input);
-            alert('created successfully');
+        try {
+            if (edit) {
+                await axios.put('http://localhost:8080/api/seed', input);
+                alert('updated successfully');
+            } else {
+                await axios.post('http://localhost:8080/api/seed', input);
+                alert('created successfully');
+            }
+            setAddModal(false);
+            getSeeds();
+        } catch {
+            alert('api failed')
         }
-        setAddModal(false);
-        getSeeds();
     }
 
     const handleEdit = async (id) => {
-        setAddModal(true);
-        setEdit(true);
-        const seeds = await axios.get(`http://localhost:8080/api/seed/${id}`);
-        setInput(seeds.data);
+        try {
+            setAddModal(true);
+            setEdit(true);
+            const seeds = await axios.get(`http://localhost:8080/api/seed/${id}`);
+            setInput(seeds.data);
+        } catch {
+            alert('api failed')
+        }
     }
 
     useEffect(() => {
@@ -65,13 +80,13 @@ const ViewSeed = () => {
 
     return (
         <>
-            <div style={addModal ? { padding: '30px', filter: 'blur(5px)' } : { padding: '30px' }}>
-                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+            <div style={addModal ? { padding: '30px', opacity: '0.5' } : { padding: '30px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <h1>SEEDS</h1>
-                <button style={{marginTop: '20px', height: '30px', backgroundColor: '#8bdc81', margin: '25px', float: 'right', width: '120px' }} onClick={() => setAddModal(true)}>Create</button>
+                    <button style={{ marginTop: '20px', height: '30px', backgroundColor: '#8bdc81', margin: '25px', float: 'right', width: '120px' }} onClick={() => setAddModal(true)}>Create</button>
                 </div>
-           
-                <table style={{ width: '100%', borderRadius: '5px', boxShadow: '0px 0px 16px #4443403D', padding:'15px' }} >
+
+                <table style={{ width: '100%', borderRadius: '5px', boxShadow: '0px 0px 16px #4443403D', padding: '15px' }} >
                     <thead>
                         <tr style={{ fontWeight: 'bold' }}>
                             <td>SL.No</td>

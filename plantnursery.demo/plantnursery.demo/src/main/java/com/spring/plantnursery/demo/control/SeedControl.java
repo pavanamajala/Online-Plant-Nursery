@@ -19,6 +19,7 @@ import com.spring.plantnursery.demo.service.ISeedService;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class SeedControl {
 	@Autowired
 	private ISeedService seedservice;

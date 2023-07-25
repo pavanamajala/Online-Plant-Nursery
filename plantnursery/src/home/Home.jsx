@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react'
+import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import AddModal from '../sharedcomponents/AddModal'
 import inputfields from './constant'
@@ -18,15 +18,17 @@ const Home = () => {
   }
 
   const handleSubmit = async () => {
-    const res = await axios.post('http://localhost:8080/auth/login', input);
-    if (res.data) {
-      localStorage.setItem('token', res.data);
-      navigate('./seed/view')
-    } else {
-      localStorage.setItem('token', '');
+    try {
+      const res = await axios.post('http://localhost:8080/auth/login', input);
+      if (res.data) {
+        localStorage.setItem('token', res.data);
+        navigate('./seed/view')
+      } else {
+        localStorage.setItem('token', '');
+      }
+    } catch {
+      alert('api failed')
     }
-    let i = localStorage.getItem('token');
-    console.log(i)
   }
 
   return (
