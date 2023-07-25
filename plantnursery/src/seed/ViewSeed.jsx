@@ -61,6 +61,17 @@ const ViewSeed = () => {
         } catch {
             alert('api failed')
         }
+        setInput({"seedId": 0,
+        "commonName": "",
+        "bloomTime": "",
+        "watering": "",
+        "difficultyLevel": "",
+        "temperature": "",
+        "typeOfSeed": "",
+        "seedDescription": "",
+        "seedsStock": null,
+        "seedsCost": null,
+        "seedsPerPacket": null})
     }
 
     const handleEdit = async (id) => {
