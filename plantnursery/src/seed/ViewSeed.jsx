@@ -22,6 +22,8 @@ const ViewSeed = () => {
         "seedsPerPacket": null
     });
 
+    axios.defaults.headers.common = {'Authentication': `Bearer ${localStorage.getItem('token')}`};
+
     const getSeeds = async () => {
         const allData = await axios.get('http://localhost:8080/api/seed');
         setSeeds(allData.data)

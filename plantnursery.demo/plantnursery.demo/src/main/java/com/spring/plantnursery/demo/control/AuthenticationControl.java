@@ -34,7 +34,7 @@ public class AuthenticationControl {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(auth.getUserName(), auth.getPassword()));
 			
 		} catch(BadCredentialsException e) {
-			throw new Exception("bad credentials");
+			return null;
 		}
 		
 		final UserDetails userDetails = myUserDetailsService.loadUserByUsername(auth.getUserName());
