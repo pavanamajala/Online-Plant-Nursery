@@ -6,7 +6,7 @@ const inputfields = [
     },
     {
         label: "Password",
-        type: "text",
+        type: "password",
         id: "password"
     },
 ]

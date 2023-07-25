@@ -17,9 +17,9 @@ const ViewSeed = () => {
         "temperature": "",
         "typeOfSeed": "",
         "seedDescription": "",
-        "seedsStock": null,
-        "seedsCost": null,
-        "seedsPerPacket": null
+        "seedsStock": '',
+        "seedsCost": '',
+        "seedsPerPacket": ''
     });
 
     axios.defaults.headers.common = { 'Authentication': `Bearer ${localStorage.getItem('token')}` };
@@ -69,9 +69,9 @@ const ViewSeed = () => {
         "temperature": "",
         "typeOfSeed": "",
         "seedDescription": "",
-        "seedsStock": null,
-        "seedsCost": null,
-        "seedsPerPacket": null})
+        "seedsStock": '',
+        "seedsCost": '',
+        "seedsPerPacket": ''})
     }
 
     const handleEdit = async (id) => {
