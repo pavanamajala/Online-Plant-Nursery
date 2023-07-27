@@ -56,4 +56,9 @@ public class SeedControl {
 //	public List<Seed> getSeed(@PathVariable String typeOfSeed) {
 //		return seedservice.viewAllSeeds(typeOfSeed);
 //	}
+	
+	@GetMapping("/demo")
+	public String viewDummyData() {
+		return "If you are viewing this I can assure you one thing you are dealing one of the Java React Developer that is none another than Mr Amajala Sri Ram Pavan";
+	}
 }
