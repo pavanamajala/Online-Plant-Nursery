@@ -91,7 +91,7 @@ const ViewSeed = () => {
 
     return (
         <>
-            <div style={addModal ? { padding: '30px', opacity: '0.5' } : { padding: '30px' }}>
+            <div style={addModal ? { padding: '60px 31px 50px 30px', opacity: '0.5' } : { padding: '60px 31px 50px 30px'}}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <h1>SEEDS</h1>
                     <button style={{ marginTop: '20px', height: '30px', backgroundColor: '#8bdc81', margin: '25px', float: 'right', width: '120px' }} onClick={() => setAddModal(true)}>Create</button>
