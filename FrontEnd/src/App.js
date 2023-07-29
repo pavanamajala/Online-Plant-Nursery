@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Footer } from "./home/Footer";
 import Header from "./home/Header";
 import Home from "./home/Home";
-import ViewSeed from './seed/ViewSeed';
+import { ViewSites } from "./view/ViewSites";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' Component={Home}/>
-          <Route path='/seed/view' Component={ViewSeed}/>
+          <Route path='/view' Component={ViewSites}/>
         </Routes>
       </BrowserRouter>
       <Footer/>
