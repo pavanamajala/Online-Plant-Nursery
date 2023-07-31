@@ -1,0 +1,39 @@
+.main-container {
+    margin-top: 63px;
+    height: 100%;
+    width: 100%;
+
+    .parent-div {
+        display: flex;
+        justify-content: center;
+    }
+
+    .input-btn {
+        margin-top: 50%;
+
+        input {
+            width: 70%;
+            border: 2px solid;
+            font-size: 20px;
+            text-indent: 38px;
+            border-radius: 20px;
+            height: 40px;
+        }
+
+        button {
+            margin-left: 20px;
+            background-color: black;
+            color: white;
+            border-radius: 2px;
+            height: 40px;
+        }
+    }
+
+    @media only screen and (min-width : 1000px) {
+
+        .input-btn {
+            margin-top: 20%;
+        }
+
+    }
+}

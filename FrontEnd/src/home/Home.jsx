@@ -21,7 +21,7 @@ const Home = () => {
   const handleSubmit = async () => {
     if(input.username === 'pavan' && input.password === '1234'){
       alert('Welcome !!!!!')
-      navigate('/view')
+      navigate('/youtube/download')
     } else {
       alert('bad credentials')
     }
