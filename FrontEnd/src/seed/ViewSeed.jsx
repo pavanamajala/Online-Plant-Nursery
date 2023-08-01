@@ -26,7 +26,7 @@ const ViewSeed = () => {
 
     const getSeeds = async () => {
         try {
-            const allData = await axios.get('http://localhost:8080/api/seed');
+            const allData = await axios.get('http://16.171.133.10:8080/api/seed');
             setSeeds(allData.data)
         } catch {
             alert('api failed')
@@ -39,7 +39,7 @@ const ViewSeed = () => {
 
     const deleteSeed = async (id) => {
         try {
-            await axios.delete(`http://localhost:8080/api/seed/${id}`)
+            await axios.delete(`http://16.171.133.10:8080/api/seed/${id}`)
             alert('deleted successfully');
             getSeeds();
         } catch {
@@ -50,10 +50,10 @@ const ViewSeed = () => {
     const handleSubmit = async () => {
         try {
             if (edit) {
-                await axios.put('http://localhost:8080/api/seed', input);
+                await axios.put('http://16.171.133.10:8080/api/seed', input);
                 alert('updated successfully');
             } else {
-                await axios.post('http://localhost:8080/api/seed', input);
+                await axios.post('http://16.171.133.10:8080/api/seed', input);
                 alert('created successfully');
             }
             setAddModal(false);
@@ -78,7 +78,7 @@ const ViewSeed = () => {
         try {
             setAddModal(true);
             setEdit(true);
-            const seeds = await axios.get(`http://localhost:8080/api/seed/${id}`);
+            const seeds = await axios.get(`http://16.171.133.10:8080/api/seed/${id}`);
             setInput(seeds.data);
         } catch {
             alert('api failed')

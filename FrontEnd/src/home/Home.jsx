@@ -19,7 +19,7 @@ const Home = () => {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post('http://localhost:8080/auth/login', input);
+      const res = await axios.post('http://16.171.133.10:8080/auth/login', input);
       if (res.data) {
         localStorage.setItem('token', res.data);
         navigate('./seed/view')
